@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'mitra';
+  font-style: normal;
+  src:url(assets/Fonts/BMitra.TTF) format('truetype'); 
+}
+
+@font-face {
+  font-family: 'yekan';
+  font-style: normal;
+  src:url(assets/Fonts/BYekan.TTF) format('truetype'); 
+}
+
+@font-face {
+  font-family: 'rezvan';
+  font-style: normal;
+  src:url(assets/Fonts/A.Rezvan.ttf) format('truetype'); 
+}
