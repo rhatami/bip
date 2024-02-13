@@ -45,11 +45,14 @@ const Main = () => {
     <Grid columns={{ xs: "1", sm: "2" }} gap="5" key="MainGrid" id="MainGrid">
       {cards.map((card) => (
         <Card key={card.title} className="MainCard">
-          <Flex className="CardFlex">
+          <Flex
+            direction={{ initial: "column", sm: "row" }}
+            className="CardFlex"
+          >
             <Avatar
               className="CardAvatar"
               src={card.img_src}
-              size={{ xs: "2", sm: "4", md: "6" }}
+              size={{ xs: "4", sm: "4", md: "6" }}
               fallback="BSI"
               radius="medium"
             />

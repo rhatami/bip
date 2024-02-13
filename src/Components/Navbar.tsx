@@ -1,21 +1,29 @@
 import { Avatar, Flex, Text } from "@radix-ui/themes";
 import "./Navbar.css";
+import { Pages } from "../App";
 
 interface NavMenue {
+  id: Pages;
   title: string;
   address: string;
 }
 
-const Navbar = () => {
+const Navbar = ({
+  currentPage,
+  setCurrentPage,
+}: {
+  currentPage: Pages;
+  setCurrentPage: (page: Pages) => void;
+}) => {
   const siteTitle = "مرجع اطلاعات بانکی";
   const menu: NavMenue[] = [
-    { title: "صفحه اصلی", address: "Main" },
-    { title: "انتقال وجه", address: "Transfer" },
-    { title: "کارمزدها", address: "Commission" },
-    { title: "سپرده ها", address: "Deposit" },
-    { title: "تسهیلات", address: "Loan" },
-    { title: "اطلاعات بانکی", address: "Information" },
-    { title: "سامانه ها", address: "Systems" },
+    { id: Pages.Main, title: "صفحه اصلی", address: "Main" },
+    { id: Pages.Transfer, title: "انتقال وجه", address: "Transfer" },
+    { id: Pages.Commission, title: "کارمزدها", address: "Commission" },
+    { id: Pages.Deposit, title: "سپرده ها", address: "Deposit" },
+    { id: Pages.Loan, title: "تسهیلات", address: "Loan" },
+    { id: Pages.Information, title: "اطلاعات بانکی", address: "Information" },
+    { id: Pages.Systems, title: "سامانه ها", address: "Systems" },
   ];
 
   return (
@@ -36,6 +44,7 @@ const Navbar = () => {
 
       <Flex
         className="NavbarMenu"
+        key="NavbarMenu"
         gap="6"
         display={{ initial: "none", xs: "none", sm: "flex" }}
       >
@@ -43,8 +52,13 @@ const Navbar = () => {
           <Text
             as="span"
             size={{ xs: "2", sm: "3", md: "4" }}
-            key={item.address}
-            className="NavbarLink"
+            className={
+              "NavbarLink " + (item.id === currentPage && "CurrentPageLink")
+            }
+            key={item.id}
+            onClick={() => {
+              if (item.id !== currentPage) setCurrentPage(item.id);
+            }}
           >
             {item.title}
           </Text>

@@ -31,7 +31,7 @@
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
 
-.NavbarLink:hover , .NavbarLink:focus{
+.NavbarLink:hover , .NavbarLink:focus , .CurrentPageLink{
     color:gold;
     cursor: pointer; 
 }
