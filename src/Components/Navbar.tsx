@@ -1,6 +1,6 @@
 import { Avatar, Flex, Text } from "@radix-ui/themes";
 import "./Navbar.css";
-import { Pages } from "../App";
+import { Pages } from "./Types";
 
 interface NavMenue {
   id: Pages;

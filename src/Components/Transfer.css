@@ -1,0 +1,13 @@
+
+.TransferRadioFlex {
+    font-family: yekan;
+    margin-bottom: 2%;
+    margin-right: 25%;
+    margin-left: 25%;
+    background-color: whitesmoke;
+    border-radius: 2%;
+  }
+
+#TransferRadioTitle{
+    font-weight: bold;
+}

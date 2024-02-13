@@ -1,57 +1,67 @@
-import "./Main.css";
+import { MainItem, MainIconsDir, Pages } from "./Types";
 import { Grid, Card, Flex, Avatar, Box, Text } from "@radix-ui/themes";
 
-interface card {
-  title: string;
-  description: string;
-  img_src: string;
-}
+const MainItems: MainItem[] = [
+  {
+    id: Pages.Transfer,
+    title: "انتقال وجه",
+    description: "اطلاعات سقف و کارمزد انتقال وجه",
+    img_src: MainIconsDir + "transfer.svg",
+  },
+  {
+    id: Pages.Commission,
+    title: "کارمزدها",
+    description: "اطلاعات کارمزدها و سر فصل ها",
+    img_src: MainIconsDir + "commission.svg",
+  },
+  {
+    id: Pages.Deposit,
+    title: "سپرده ها",
+    description: "اطلاعات سپرده ها و گواهی سپرده",
+    img_src: MainIconsDir + "deposit.svg",
+  },
+  {
+    id: Pages.Loan,
+    title: "تسهیلات",
+    description: "اطلاعات تسهیلات و طرح ها",
+    img_src: MainIconsDir + "loan.svg",
+  },
+  {
+    id: Pages.Information,
+    title: "اطلاعات بانکی",
+    description: "اطلاعات و تعاریف مورد نیاز",
+    img_src: MainIconsDir + "information.svg",
+  },
+  {
+    id: Pages.Systems,
+    title: "سامانه ها",
+    description: "جستجو و دسترسی به سامانه های مورد نیاز",
+    img_src: MainIconsDir + "systems.svg",
+  },
+];
 
-const Main = () => {
-  const icons_folder = "/Icons/";
-  const cards: card[] = [
-    {
-      title: "انتقال وجه",
-      description: "اطلاعات سقف و کارمزد انتقال وجه",
-      img_src: icons_folder + "transfer.svg",
-    },
-    {
-      title: "کارمزدها",
-      description: "اطلاعات کارمزدها و سر فصل ها",
-      img_src: icons_folder + "commission.svg",
-    },
-    {
-      title: "سپرده ها",
-      description: "اطلاعات سپرده ها و گواهی سپرده",
-      img_src: icons_folder + "deposit.svg",
-    },
-    {
-      title: "تسهیلات",
-      description: "اطلاعات تسهیلات و طرح ها",
-      img_src: icons_folder + "loan.svg",
-    },
-    {
-      title: "اطلاعات بانکی",
-      description: "اطلاعات و تعاریف مورد نیاز",
-      img_src: icons_folder + "information.svg",
-    },
-    {
-      title: "سامانه ها",
-      description: "جستجو و دسترسی به سامانه های مورد نیاز",
-      img_src: icons_folder + "systems.svg",
-    },
-  ];
+const Main = ({
+  setCurrentPage,
+}: {
+  setCurrentPage: (page: Pages) => void;
+}) => {
   return (
-    <Grid columns={{ xs: "1", sm: "2" }} gap="5" key="MainGrid" id="MainGrid">
-      {cards.map((card) => (
-        <Card key={card.title} className="MainCard">
+    <Grid
+      columns={{ xs: "1", sm: "2" }}
+      gap="5"
+      key="MainGrid"
+      className="CardsGrid"
+    >
+      {MainItems.map((item) => (
+        <Card key={item.title} className="Card">
           <Flex
             direction={{ initial: "column", sm: "row" }}
             className="CardFlex"
+            onClick={() => console.log(setCurrentPage(item.id))}
           >
             <Avatar
               className="CardAvatar"
-              src={card.img_src}
+              src={item.img_src}
               size={{ xs: "4", sm: "4", md: "6" }}
               fallback="BSI"
               radius="medium"
@@ -62,14 +72,14 @@ const Main = () => {
                 size={{ xs: "4", sm: "5", md: "6" }}
                 className="CardTitle"
               >
-                {card.title}
+                {item.title}
               </Text>
               <Text
                 as="p"
                 size={{ xs: "3", sm: "4", md: "5" }}
                 className="CardDescription"
               >
-                {card.description}
+                {item.description}
               </Text>
             </Box>
           </Flex>
