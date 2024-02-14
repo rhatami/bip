@@ -1,5 +1,6 @@
+import InfoCard from "./InfoCard";
 import { MainItem, MainIconsDir, Pages } from "./Types";
-import { Grid, Card, Flex, Avatar, Box, Text } from "@radix-ui/themes";
+import { Grid } from "@radix-ui/themes";
 
 const MainItems: MainItem[] = [
   {
@@ -53,37 +54,13 @@ const Main = ({
       className="CardsGrid"
     >
       {MainItems.map((item) => (
-        <Card key={item.title} className="Card">
-          <Flex
-            direction={{ initial: "column", sm: "row" }}
-            className="CardFlex"
-            onClick={() => console.log(setCurrentPage(item.id))}
-          >
-            <Avatar
-              className="CardAvatar"
-              src={item.img_src}
-              size={{ xs: "4", sm: "4", md: "6" }}
-              fallback="BSI"
-              radius="medium"
-            />
-            <Box className="CardBox">
-              <Text
-                as="p"
-                size={{ xs: "4", sm: "5", md: "6" }}
-                className="CardTitle"
-              >
-                {item.title}
-              </Text>
-              <Text
-                as="p"
-                size={{ xs: "3", sm: "4", md: "5" }}
-                className="CardDescription"
-              >
-                {item.description}
-              </Text>
-            </Box>
-          </Flex>
-        </Card>
+        <section onClick={() => setCurrentPage(item.id)}>
+          <InfoCard
+            title={item.title}
+            img_src={item.img_src}
+            body={<>{item.description}</>}
+          />
+        </section>
       ))}
     </Grid>
   );

@@ -1,14 +1,7 @@
 import "./Transfer.css";
-import {
-  Avatar,
-  Box,
-  Card,
-  Flex,
-  Grid,
-  RadioGroup,
-  Text,
-} from "@radix-ui/themes";
+import { Flex, Grid, RadioGroup, Text } from "@radix-ui/themes";
 import { TransferItem, TransferIconsDir } from "./Types";
+import InfoCard from "./InfoCard";
 
 const unlimited = "بدون سقف";
 
@@ -91,7 +84,14 @@ const getDescriptionList = (item: TransferItem) => {
   );
 };
 
-const customers = ["محجور", "اتباع", "حقوقی", "حقیقی"];
+const Accounts = [
+  { value: "underage", label: "محجور" },
+  { value: "foreign", label: "اتباع" },
+  { value: "legal", label: "حقوقی" },
+  { value: "business", label: "تجاری" },
+  { value: "real", label: "حقیقی" },
+];
+
 const Transfer = () => {
   return (
     <>
@@ -106,21 +106,21 @@ const Transfer = () => {
           size={{ initial: "2", md: "5" }}
           id="TransferRadioTitle"
         >
-          نوع مشتری :
+          نوع حساب :
         </Text>
         <RadioGroup.Root
-          defaultValue={(customers.length - 1).toString()}
+          defaultValue={(Accounts.length - 1).toString()}
           className="RadioButtons"
         >
           <Flex gap="4" id="RadioButtonsFlex">
-            {customers.map((customer, index) => (
+            {Accounts.map((account) => (
               <Text as="label" size={{ initial: "2", md: "5" }}>
                 <Flex gap="1" className="TransferRadioItem">
                   <RadioGroup.Item
                     className="TransferRadioButton"
-                    value={index.toString()}
+                    value={account.value}
                   />
-                  {customer}
+                  {account.label}
                 </Flex>
               </Text>
             ))}
@@ -135,32 +135,11 @@ const Transfer = () => {
         className="CardsGrid"
       >
         {TransferItems.map((item) => (
-          <Card key={item.title} className="Card">
-            <Flex
-              direction={{ initial: "column", sm: "row" }}
-              className="CardFlex"
-            >
-              <Avatar
-                className="CardAvatar"
-                src={item.img_src}
-                size={{ xs: "4", sm: "4", md: "6" }}
-                fallback="BSI"
-                radius="medium"
-              />
-              <Box className="CardBox">
-                <Text
-                  as="p"
-                  size={{ xs: "4", sm: "5", md: "6" }}
-                  className="CardTitle"
-                >
-                  {item.title}
-                </Text>
-                <article className="CardDescription">
-                  {getDescriptionList(item)}
-                </article>
-              </Box>
-            </Flex>
-          </Card>
+          <InfoCard
+            title={item.title}
+            img_src={item.img_src}
+            body={getDescriptionList(item)}
+          />
         ))}
       </Grid>
     </>
