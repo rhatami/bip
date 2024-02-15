@@ -2,28 +2,21 @@ import "./Transfer.css";
 import { Flex, Grid, RadioGroup, Text } from "@radix-ui/themes";
 import { TransferItem, TransferIconsDir } from "./Types";
 import InfoCard from "./InfoCard";
+import { useState } from "react";
 
 const unlimited = "بدون سقف";
 
+const monthlyLimit: TransferItem = {
+  title: " سقف ماهیانه",
+  img_src: TransferIconsDir + "MonthlyLimit.svg",
+  dakheli: unlimited,
+  sahab: "150,000,000 ریال",
+  satna: unlimited,
+  paya: "1,000,000,000 ریال",
+  pol: "150,000,000 ریال",
+};
+
 const TransferItems: TransferItem[] = [
-  {
-    title: "سقف ماهیانه",
-    img_src: TransferIconsDir + "MonthlyLimit.svg",
-    dakheli: unlimited,
-    sahab: "150,000,000 ریال",
-    satna: unlimited,
-    paya: "1,000,000,000 ریال",
-    pol: "150,000,000 ریال",
-  },
-  {
-    title: "دستگاه کارتخوان",
-    img_src: TransferIconsDir + "POS.svg",
-    dakheli: unlimited,
-    sahab: "150,000,000 ریال",
-    satna: unlimited,
-    paya: "1,000,000,000 ریال",
-    pol: "150,000,000 ریال",
-  },
   {
     title: "شعبه",
     img_src: TransferIconsDir + "Branch.svg",
@@ -70,16 +63,25 @@ const TransferItems: TransferItem[] = [
     paya: "ندارد",
     pol: "ندارد",
   },
+  {
+    title: "دستگاه کارتخوان",
+    img_src: TransferIconsDir + "POS.svg",
+    dakheli: unlimited,
+    sahab: "150,000,000 ریال",
+    satna: unlimited,
+    paya: "1,000,000,000 ریال",
+    pol: "150,000,000 ریال",
+  },
 ];
 
-const getDescriptionList = (item: TransferItem) => {
+const getBody = (item: TransferItem) => {
   return (
-    <ul className="DescriptionList">
-      <li className="DescriptionItem">داخلی : {item.dakheli}</li>
-      <li className="DescriptionItem">کارت به کارت : {item.sahab}</li>
-      <li className="DescriptionItem">ساتنا : {item.satna}</li>
-      <li className="DescriptionItem">پایا : {item.paya}</li>
-      <li className="DescriptionItem">پل : {item.pol}</li>
+    <ul className="TransferBody">
+      <li className="TransferItem">داخلی : {item.dakheli}</li>
+      <li className="TransferItem">کارت به کارت : {item.sahab}</li>
+      <li className="TransferItem">ساتنا : {item.satna}</li>
+      <li className="TransferItem">پایا : {item.paya}</li>
+      <li className="TransferItem">پل : {item.pol}</li>
     </ul>
   );
 };
@@ -93,14 +95,11 @@ const Accounts = [
 ];
 
 const Transfer = () => {
+  const [account, setAccount] = useState("real");
+
   return (
     <>
-      <Flex
-        gap="3"
-        justify="center"
-        className="TransferRadioFlex Card"
-        key="TransferRadioFlex"
-      >
+      <Flex gap="3" className="TransferRadioFlex Card" key="TransferRadioFlex">
         <Text
           as="label"
           size={{ initial: "2", md: "5" }}
@@ -108,25 +107,35 @@ const Transfer = () => {
         >
           نوع حساب :
         </Text>
-        <RadioGroup.Root
-          defaultValue={(Accounts.length - 1).toString()}
-          className="RadioButtons"
-        >
-          <Flex gap="4" id="RadioButtonsFlex">
-            {Accounts.map((account) => (
+        <RadioGroup.Root defaultValue={account} className="RadioButtons">
+          <Flex
+            gap="4"
+            id="RadioButtonsFlex"
+            direction={{ initial: "column", sm: "row" }}
+          >
+            {Accounts.map((acc) => (
               <Text as="label" size={{ initial: "2", md: "5" }}>
                 <Flex gap="1" className="TransferRadioItem">
                   <RadioGroup.Item
                     className="TransferRadioButton"
-                    value={account.value}
+                    value={acc.value}
+                    onClick={() => setAccount(acc.value)}
                   />
-                  {account.label}
+                  {acc.label}
                 </Flex>
               </Text>
             ))}
           </Flex>
         </RadioGroup.Root>
       </Flex>
+
+      <section className="MonthlyLimitCard">
+        <InfoCard
+          title={monthlyLimit.title}
+          img_src={monthlyLimit.img_src}
+          body={getBody(monthlyLimit)}
+        />
+      </section>
 
       <Grid
         columns={{ xs: "1", sm: "2" }}
@@ -138,7 +147,7 @@ const Transfer = () => {
           <InfoCard
             title={item.title}
             img_src={item.img_src}
-            body={getDescriptionList(item)}
+            body={getBody(item)}
           />
         ))}
       </Grid>

@@ -30,3 +30,12 @@ export interface TransferItem extends Item {
     paya:string;
     pol:string;
 }
+
+export interface DepositItem extends Item{
+    minAmount:number;
+    rate:number;
+    failureRate:string;
+    minPeriod:number;
+    expirationTime?:string;
+}
+

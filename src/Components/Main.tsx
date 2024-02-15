@@ -54,7 +54,10 @@ const Main = ({
       className="CardsGrid"
     >
       {MainItems.map((item) => (
-        <section onClick={() => setCurrentPage(item.id)}>
+        <section
+          key={"CardContainer" + item.id}
+          onClick={() => setCurrentPage(item.id)}
+        >
           <InfoCard
             title={item.title}
             img_src={item.img_src}
