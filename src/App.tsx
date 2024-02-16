@@ -6,6 +6,7 @@ import { useState } from "react";
 import Transfer from "./Components/Transfer";
 import { Pages } from "./Components/Types";
 import Deposit from "./Components/Deposit";
+import Loan from "./Components/Loan";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState<Pages>(Pages.Main);
@@ -20,6 +21,7 @@ const App = () => {
         {isCurrentPage(Pages.Main) && <Main setCurrentPage={setCurrentPage} />}
         {isCurrentPage(Pages.Transfer) && <Transfer />}
         {isCurrentPage(Pages.Deposit) && <Deposit />}
+        {isCurrentPage(Pages.Loan) && <Loan />}
       </Container>
     </>
   );

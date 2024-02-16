@@ -16,7 +16,7 @@ const InfoCard = ({
         <Avatar
           className="CardAvatar"
           src={img_src}
-          size={{ xs: "4", sm: "4", md: "6" }}
+          size={{ xs: "4", sm: "5", md: "6" }}
           fallback="BSI"
           radius="medium"
         />

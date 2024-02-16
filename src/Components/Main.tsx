@@ -49,9 +49,10 @@ const Main = ({
   return (
     <Grid
       columns={{ xs: "1", sm: "2" }}
-      gap="5"
+      gap="6"
       key="MainGrid"
       className="CardsGrid"
+      justify="between"
     >
       {MainItems.map((item) => (
         <section

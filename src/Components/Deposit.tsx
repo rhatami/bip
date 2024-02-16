@@ -1,11 +1,10 @@
 import "./Deposit.css";
 import { Badge, Card, Flex, Grid, Text } from "@radix-ui/themes";
-import { DepositItem } from "./Types";
+import { DepositItem, ThousandSeparator } from "./Types";
 
 const Deposits: DepositItem[] = [
   {
     title: "کوتاه مدت عادی",
-    img_src: "",
     minAmount: 100_000,
     rate: 5,
     failureRate: "0",
@@ -13,7 +12,6 @@ const Deposits: DepositItem[] = [
   },
   {
     title: "کوتاه مدت امید",
-    img_src: "",
     minAmount: 100_000,
     rate: 10,
     failureRate: "0",
@@ -21,7 +19,6 @@ const Deposits: DepositItem[] = [
   },
   {
     title: "بلند مدت یکساله",
-    img_src: "",
     minAmount: 100_000_000,
     rate: 20.5,
     failureRate: "پس از یک ماه برگشت سود ندارد",
@@ -29,7 +26,6 @@ const Deposits: DepositItem[] = [
   },
   {
     title: "بلند مدت دو ساله",
-    img_src: "",
     minAmount: 100_000_000,
     rate: 21.5,
     failureRate: "پس از دو ماه برگشت سود ندارد",
@@ -37,7 +33,6 @@ const Deposits: DepositItem[] = [
   },
   {
     title: "بلند مدت سه ساله",
-    img_src: "",
     minAmount: 100_000_000,
     rate: 22.5,
     failureRate: "پس از سه ماه برگشت سود ندارد",
@@ -48,7 +43,6 @@ const Deposits: DepositItem[] = [
 const GavahiSeporde: DepositItem[] = [
   {
     title: "طرح 3400 مرحله 32",
-    img_src: "",
     minAmount: 10_000_000,
     rate: 20.5,
     failureRate: "10%",
@@ -57,7 +51,6 @@ const GavahiSeporde: DepositItem[] = [
   },
   {
     title: "طرح 3400 مرحله 33",
-    img_src: "",
     minAmount: 10_000_000,
     rate: 20.5,
     failureRate: "10%",
@@ -65,8 +58,7 @@ const GavahiSeporde: DepositItem[] = [
     expirationTime: "25 بهمن ماه",
   },
   {
-    title: "طرح 3400 مرحله 33",
-    img_src: "",
+    title: "طرح 3400 مرحله 34",
     minAmount: 10_000_000,
     rate: 20.5,
     failureRate: "10%",
@@ -75,7 +67,6 @@ const GavahiSeporde: DepositItem[] = [
   },
   {
     title: "طرح 3400 مرحله 45",
-    img_src: "",
     minAmount: 10_000_000,
     rate: 18,
     failureRate: "10%",
@@ -87,9 +78,11 @@ const GavahiSeporde: DepositItem[] = [
 const getDepositBody = (item: DepositItem) => {
   return (
     <ul className="DepositBody" key={"List" + item.title}>
-      <li className="DepositItem">حداقل مبلغ سپرده : {item.minAmount} ریال</li>
-      <li className="DepositItem">نرخ شکست : {item.failureRate}</li>
+      <li className="DepositItem">
+        حداقل مبلغ سپرده : {ThousandSeparator(item.minAmount)} ریال
+      </li>
       <li className="DepositItem">حداقل مدت سپرده : {item.minPeriod} ماه</li>
+      <li className="DepositItem">نرخ شکست : {item.failureRate}</li>
     </ul>
   );
 };
@@ -97,9 +90,11 @@ const getDepositBody = (item: DepositItem) => {
 const getGavahiBody = (item: DepositItem) => {
   return (
     <ul className="DepositBody" key={"List" + item.title}>
-      <li className="DepositItem">حداقل مبلغ سپرده : {item.minAmount} ریال</li>
-      <li className="DepositItem">نرخ شکست : {item.failureRate}</li>
+      <li className="DepositItem">
+        حداقل مبلغ سپرده : {ThousandSeparator(item.minAmount)} ریال
+      </li>
       <li className="DepositItem">مدت سپرده : {item.minPeriod} ماه</li>
+      <li className="DepositItem">نرخ شکست : {item.failureRate}</li>
       <li className="DepositItem">تاریخ سررسید : {item.expirationTime}</li>
     </ul>
   );
@@ -146,7 +141,9 @@ const DepositCard = ({
 const Deposit = () => {
   return (
     <Flex direction="column" gap="2">
-      <Text className="DeposiSepordeTitle">سپرده ها</Text>
+      <Text as="div" className="DeposiSepordeTitle SectionHeader">
+        سپرده ها
+      </Text>
       <Grid
         columns={{ xs: "1", sm: "2", md: "3" }}
         gap="5"
@@ -163,7 +160,9 @@ const Deposit = () => {
         ))}
       </Grid>
 
-      <Text className="DepositGavahiTitle">گواهی سپرده</Text>
+      <Text as="div" className="DepositGavahiTitle SectionHeader">
+        گواهی سپرده
+      </Text>
       <Grid
         columns={{ xs: "1", sm: "2", md: "3" }}
         gap="5"
