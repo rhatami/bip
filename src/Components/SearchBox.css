@@ -1,0 +1,13 @@
+.SearchFlex{
+    margin: 1%;
+}
+
+#SearchLabel{
+    font-family: rezvan !important;
+    font-size: larger;
+}
+
+#SearchInput{
+    font-family: mitra !important;
+    font-size: larger;
+}

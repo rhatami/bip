@@ -87,11 +87,11 @@ const getBody = (item: TransferItem) => {
 };
 
 const Accounts = [
-  { value: "underage", label: "محجور" },
-  { value: "foreign", label: "اتباع" },
-  { value: "legal", label: "حقوقی" },
-  { value: "business", label: "تجاری" },
   { value: "real", label: "حقیقی" },
+  { value: "business", label: "تجاری" },
+  { value: "legal", label: "حقوقی" },
+  { value: "foreign", label: "اتباع" },
+  { value: "underage", label: "محجور" },
 ];
 
 const Transfer = () => {

@@ -1,0 +1,23 @@
+.SearcاFlex{
+    margin-right: 5%;
+}
+
+.SystemsTable table{
+    text-align: right !important;
+    overflow-y:scroll;
+}
+
+.SystemsTable thead{
+    font-family: rezvan !important;
+    font-size: large;
+}
+
+.SystemsTable tbody td{
+    font-family: mitra !important;
+    font-size: 130%;
+}
+
+.SystemsTable tbody th , a{
+    font-family: yekan !important;
+    font-size: medium;
+}

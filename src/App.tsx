@@ -1,4 +1,4 @@
-import "./App.css";
+import { DirectionProvider } from "@radix-ui/react-direction";
 import { Container } from "@radix-ui/themes";
 import Navbar from "./Components/Navbar";
 import Main from "./Components/Main";
@@ -7,6 +7,7 @@ import Transfer from "./Components/Transfer";
 import { Pages } from "./Components/Types";
 import Deposit from "./Components/Deposit";
 import Loan from "./Components/Loan";
+import Systems from "./Components/Systems";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState<Pages>(Pages.Main);
@@ -16,13 +17,18 @@ const App = () => {
 
   return (
     <>
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      <Container key="AppContainer" id="AppContainer">
-        {isCurrentPage(Pages.Main) && <Main setCurrentPage={setCurrentPage} />}
-        {isCurrentPage(Pages.Transfer) && <Transfer />}
-        {isCurrentPage(Pages.Deposit) && <Deposit />}
-        {isCurrentPage(Pages.Loan) && <Loan />}
-      </Container>
+      <DirectionProvider dir="rtl">
+        <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Container key="AppContainer" id="AppContainer">
+          {isCurrentPage(Pages.Main) && (
+            <Main setCurrentPage={setCurrentPage} />
+          )}
+          {isCurrentPage(Pages.Transfer) && <Transfer />}
+          {isCurrentPage(Pages.Deposit) && <Deposit />}
+          {isCurrentPage(Pages.Loan) && <Loan />}
+          {isCurrentPage(Pages.Systems) && <Systems />}
+        </Container>
+      </DirectionProvider>
     </>
   );
 };

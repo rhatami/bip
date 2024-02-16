@@ -63,3 +63,9 @@ export interface LoanItem extends MoneyItem{
     customers : customerType[];
     payback:string;
 }
+
+export interface SystemItem {
+    title:string;
+    description:string;
+    url:string;
+}
