@@ -8,6 +8,7 @@ import { Pages } from "./Components/Types";
 import Deposit from "./Components/Deposit";
 import Loan from "./Components/Loan";
 import Systems from "./Components/Systems";
+import Search from "./Components/Search";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState<Pages>(Pages.Main);
@@ -27,6 +28,7 @@ const App = () => {
           {isCurrentPage(Pages.Deposit) && <Deposit />}
           {isCurrentPage(Pages.Loan) && <Loan />}
           {isCurrentPage(Pages.Systems) && <Systems />}
+          {isCurrentPage(Pages.Search) && <Search />}
         </Container>
       </DirectionProvider>
     </>

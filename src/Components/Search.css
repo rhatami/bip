@@ -1,0 +1,44 @@
+.SearchFlex {
+  margin: 1%;
+}
+
+#SearchLabel {
+  font-family: rezvan !important;
+  font-size: larger;
+}
+
+#SearchInput {
+  font-family: mitra !important;
+  font-size: larger;
+}
+
+.resultTitle{
+  font-family: yekan;
+  font-size: larger;
+}
+
+.resultText{
+   font-family: mitra;
+   font-size: larger;
+   overflow: scroll;
+   border: none;
+}
+
+.rt-TextFieldRoot{
+  width: 70% !important;
+}
+
+
+.AutoCompleteFlex{
+  background-color: white;
+  font-family: mitra;
+  font-size: large;
+  width: 65%;
+  margin-right: 20%;
+  margin-top: -.1%;
+  padding: 1%;
+}
+
+.ResultGrid{
+  margin-top: 3%;
+}

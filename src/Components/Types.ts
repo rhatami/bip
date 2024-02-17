@@ -10,6 +10,7 @@ export enum Pages {
     "Loan",
     "Information",
     "Systems",
+    "Search"
   }
 
 const IconsDir = "/Icons/";
