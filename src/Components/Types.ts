@@ -13,6 +13,7 @@ export enum Pages {
     "Search"
   }
 
+// const IconsDir = "/bip/Icons/";
 const IconsDir = "/Icons/";
 export const MainIconsDir = IconsDir + "Main/";
 export const TransferIconsDir = IconsDir + "Transfer/";

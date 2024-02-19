@@ -24,7 +24,7 @@ const Navbar = ({
     { id: Pages.Loan, title: "تسهیلات", address: "Loan" },
     { id: Pages.Information, title: "اطلاعات بانکی", address: "Information" },
     { id: Pages.Systems, title: "سامانه ها", address: "Systems" },
-    { id: Pages.Search, title: "موتور جستجو", address: "Search" },
+    { id: Pages.Search, title: "** موتور جستجو **", address: "Search" },
   ];
 
   return (

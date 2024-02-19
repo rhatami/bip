@@ -1,16 +1,50 @@
-.SearchFlex {
-  margin: 1%;
+
+.SearchBarFlex {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 #SearchLabel {
   font-family: rezvan !important;
-  font-size: larger;
+  font-size: x-large;
 }
 
-#SearchInput {
-  font-family: mitra !important;
-  font-size: larger;
+.SearchBarFlex #SearchInput{
+  padding: 1rem 1rem;
+  font-family: mitra;
+  font-size: large;
+  width: 30%;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 3px solid rgb(115, 223, 73);
+  transition: all 300ms ease-in-out;
 }
+
+.SearchBarFlex #SearchInput:focus {
+  border-bottom: 3px solid rgb(0, 158, 66);
+  outline: none;
+  width: 65%;
+}
+
+.AutoCompleteFlex{
+  background-color: white;
+  font-family: mitra;
+  font-size: large;
+  width: 35%;
+  margin:auto;
+  margin-top: -1.5% !important;
+  padding: 1%;
+}
+
+.ResultGrid{
+  margin-top: 3%;
+  align-items: center;
+}
+
 
 .resultTitle{
   font-family: yekan;
@@ -19,6 +53,7 @@
 
 .resultText{
    font-family: mitra;
+   padding-right: 2%;
    font-size: larger;
    overflow: scroll;
    border: none;
@@ -26,19 +61,4 @@
 
 .rt-TextFieldRoot{
   width: 70% !important;
-}
-
-
-.AutoCompleteFlex{
-  background-color: white;
-  font-family: mitra;
-  font-size: large;
-  width: 65%;
-  margin-right: 20%;
-  margin-top: -.1%;
-  padding: 1%;
-}
-
-.ResultGrid{
-  margin-top: 3%;
 }

@@ -1,6 +1,5 @@
 import "./Search.css";
-import { InputLabel } from "@mui/material";
-import { Card, Flex, Grid, TextFieldInput } from "@radix-ui/themes";
+import { Card, Flex, Grid, Text } from "@radix-ui/themes";
 import { useRef, useState } from "react";
 import MiniSearch, { Suggestion } from "minisearch";
 import { Data } from "./Data";
@@ -42,53 +41,50 @@ const Search = () => {
   };
 
   return (
-    <Flex key="MainFlex" className="MainFlex" gap="3" direction="column">
-      <Flex key="SearchFlex" className="SearchFlex" direction="column">
-        <Flex
-          key="SearchBarFlex"
-          className="SearchBarFlex"
-          gap="3"
-          justify="center"
-        >
-          <InputLabel id="SearchLabel">جستجو</InputLabel>
-          <TextFieldInput
-            id="SearchInput"
-            size="3"
-            ref={searchInput}
-            defaultValue={searchText}
-            placeholder="مثلا : سنا ، سپاس ، میثاق ، جاری طلایی ، سحاب ، ساتنا ، پایا ، پایانه فروش ، بلندمدت یک ساله ، بلند مدت دو ساله ، بلند مدت سه ساله"
-            onKeyDown={(event) => {
-              if (event.key === "Enter")
-                if (
-                  !searchInput.current?.value ||
-                  isBlank(searchInput.current?.value)
-                )
-                  setSearchText("");
-                else {
-                  setSearchText(searchInput.current?.value);
-                  setAutoComplete([]);
-                }
-            }}
-            onChange={(event) => searchAutoHandle(event)}
-          />
-        </Flex>
-        <Flex
-          key="AutoCompleteFlex"
-          className="AutoCompleteFlex"
-          direction="column"
-          justify="center"
-          gap="1"
-          display={autoComplete.length == 0 ? "none" : "inline-flex"}
-        >
-          {autoComplete.map((item) => (
-            <span>{item.suggestion}</span>
-          ))}
-        </Flex>
+    <Flex
+      key="SearchBarFlex"
+      className="SearchBarFlex"
+      gap="4"
+      direction="column"
+      justify="center"
+    >
+      <Text id="SearchLabel">جستجو : </Text>
+      <input
+        id="SearchInput"
+        type="text"
+        ref={searchInput}
+        defaultValue={searchText}
+        placeholder="مثلا : سنا ، سپاس ، میثاق ، جاری طلایی ، سحاب ، ساتنا ، پایا ، پایانه فروش ، بلندمدت یک ساله ، بلند مدت دو ساله ، بلند مدت سه ساله"
+        onKeyDown={(event) => {
+          if (event.key === "Enter")
+            if (
+              !searchInput.current?.value ||
+              isBlank(searchInput.current?.value)
+            )
+              setSearchText("");
+            else {
+              setSearchText(searchInput.current?.value);
+              setAutoComplete([]);
+            }
+        }}
+        onChange={(event) => searchAutoHandle(event)}
+      />
+      <Flex
+        key="AutoCompleteFlex"
+        className="AutoCompleteFlex"
+        direction="column"
+        justify="center"
+        gap="1"
+        display={autoComplete.length == 0 ? "none" : "inline-flex"}
+      >
+        {autoComplete.map((item) => (
+          <span>{item.suggestion}</span>
+        ))}
       </Flex>
       <Grid
         key="ResultGrid"
         className="ResultGrid"
-        gap="2"
+        gap="6"
         columns={{ initial: "1", xs: "1", md: "2" }}
       >
         {results.map(
