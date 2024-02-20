@@ -71,3 +71,9 @@ export interface SystemItem {
     description:string;
     url:string;
 }
+
+export interface CommissionItem {
+    title:string;
+    chapter:string;
+    price:number;
+}
